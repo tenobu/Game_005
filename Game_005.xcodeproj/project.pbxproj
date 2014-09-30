@@ -9,11 +9,18 @@
 /* Begin PBXBuildFile section */
 		98CDD67F19DAE69F00A83271 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDD67E19DAE69F00A83271 /* main.m */; };
 		98CDD68219DAE69F00A83271 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDD68119DAE69F00A83271 /* AppDelegate.m */; };
-		98CDD68519DAE69F00A83271 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDD68419DAE69F00A83271 /* ViewController.m */; };
-		98CDD68819DAE69F00A83271 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98CDD68619DAE69F00A83271 /* Main.storyboard */; };
 		98CDD68A19DAE69F00A83271 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98CDD68919DAE69F00A83271 /* Images.xcassets */; };
 		98CDD68D19DAE69F00A83271 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98CDD68B19DAE69F00A83271 /* LaunchScreen.xib */; };
 		98CDD69919DAE69F00A83271 /* Game_005Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDD69819DAE69F00A83271 /* Game_005Tests.m */; };
+		98CDD6B519DAE87200A83271 /* ImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDD6A619DAE87200A83271 /* ImageView.m */; };
+		98CDD6B619DAE87200A83271 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDD6A819DAE87200A83271 /* MainViewController.m */; };
+		98CDD6B719DAE87200A83271 /* MessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDD6AA19DAE87200A83271 /* MessageView.m */; };
+		98CDD6B819DAE87200A83271 /* ProgressObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDD6AC19DAE87200A83271 /* ProgressObserver.m */; };
+		98CDD6B919DAE87200A83271 /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDD6AE19DAE87200A83271 /* ProgressView.m */; };
+		98CDD6BA19DAE87200A83271 /* SessionContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDD6B019DAE87200A83271 /* SessionContainer.m */; };
+		98CDD6BC19DAE87200A83271 /* Transcript.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDD6B419DAE87200A83271 /* Transcript.m */; };
+		98CDD6BF19DAEBB000A83271 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98CDD6BD19DAEBB000A83271 /* MainStoryboard_iPhone.storyboard */; };
+		98CDD6C319DB192400A83271 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDD6C219DB192400A83271 /* SettingsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +39,29 @@
 		98CDD67E19DAE69F00A83271 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		98CDD68019DAE69F00A83271 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		98CDD68119DAE69F00A83271 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		98CDD68319DAE69F00A83271 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		98CDD68419DAE69F00A83271 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		98CDD68719DAE69F00A83271 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		98CDD68919DAE69F00A83271 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		98CDD68C19DAE69F00A83271 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		98CDD69219DAE69F00A83271 /* Game_005Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Game_005Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98CDD69719DAE69F00A83271 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98CDD69819DAE69F00A83271 /* Game_005Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Game_005Tests.m; sourceTree = "<group>"; };
+		98CDD6A519DAE87200A83271 /* ImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageView.h; sourceTree = "<group>"; };
+		98CDD6A619DAE87200A83271 /* ImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageView.m; sourceTree = "<group>"; };
+		98CDD6A719DAE87200A83271 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		98CDD6A819DAE87200A83271 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		98CDD6A919DAE87200A83271 /* MessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageView.h; sourceTree = "<group>"; };
+		98CDD6AA19DAE87200A83271 /* MessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageView.m; sourceTree = "<group>"; };
+		98CDD6AB19DAE87200A83271 /* ProgressObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressObserver.h; sourceTree = "<group>"; };
+		98CDD6AC19DAE87200A83271 /* ProgressObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressObserver.m; sourceTree = "<group>"; };
+		98CDD6AD19DAE87200A83271 /* ProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressView.h; sourceTree = "<group>"; };
+		98CDD6AE19DAE87200A83271 /* ProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressView.m; sourceTree = "<group>"; };
+		98CDD6AF19DAE87200A83271 /* SessionContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionContainer.h; sourceTree = "<group>"; };
+		98CDD6B019DAE87200A83271 /* SessionContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionContainer.m; sourceTree = "<group>"; };
+		98CDD6B319DAE87200A83271 /* Transcript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transcript.h; sourceTree = "<group>"; };
+		98CDD6B419DAE87200A83271 /* Transcript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transcript.m; sourceTree = "<group>"; };
+		98CDD6BE19DAEBB000A83271 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		98CDD6C019DAF14800A83271 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
+		98CDD6C119DB192400A83271 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		98CDD6C219DB192400A83271 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,13 +103,14 @@
 		98CDD67B19DAE69F00A83271 /* Game_005 */ = {
 			isa = PBXGroup;
 			children = (
+				98CDD6BD19DAEBB000A83271 /* MainStoryboard_iPhone.storyboard */,
+				98CDD68B19DAE69F00A83271 /* LaunchScreen.xib */,
+				98CDD6A219DAE6EA00A83271 /* Model */,
+				98CDD6A319DAE6F700A83271 /* View */,
+				98CDD6A419DAE70500A83271 /* Controller */,
 				98CDD68019DAE69F00A83271 /* AppDelegate.h */,
 				98CDD68119DAE69F00A83271 /* AppDelegate.m */,
-				98CDD68319DAE69F00A83271 /* ViewController.h */,
-				98CDD68419DAE69F00A83271 /* ViewController.m */,
-				98CDD68619DAE69F00A83271 /* Main.storyboard */,
 				98CDD68919DAE69F00A83271 /* Images.xcassets */,
-				98CDD68B19DAE69F00A83271 /* LaunchScreen.xib */,
 				98CDD67C19DAE69F00A83271 /* Supporting Files */,
 			);
 			path = Game_005;
@@ -96,6 +119,7 @@
 		98CDD67C19DAE69F00A83271 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				98CDD6C019DAF14800A83271 /* Prefix.pch */,
 				98CDD67D19DAE69F00A83271 /* Info.plist */,
 				98CDD67E19DAE69F00A83271 /* main.m */,
 			);
@@ -117,6 +141,43 @@
 				98CDD69719DAE69F00A83271 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		98CDD6A219DAE6EA00A83271 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				98CDD6AF19DAE87200A83271 /* SessionContainer.h */,
+				98CDD6B019DAE87200A83271 /* SessionContainer.m */,
+				98CDD6B319DAE87200A83271 /* Transcript.h */,
+				98CDD6B419DAE87200A83271 /* Transcript.m */,
+				98CDD6AB19DAE87200A83271 /* ProgressObserver.h */,
+				98CDD6AC19DAE87200A83271 /* ProgressObserver.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		98CDD6A319DAE6F700A83271 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				98CDD6A919DAE87200A83271 /* MessageView.h */,
+				98CDD6AA19DAE87200A83271 /* MessageView.m */,
+				98CDD6A519DAE87200A83271 /* ImageView.h */,
+				98CDD6A619DAE87200A83271 /* ImageView.m */,
+				98CDD6AD19DAE87200A83271 /* ProgressView.h */,
+				98CDD6AE19DAE87200A83271 /* ProgressView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		98CDD6A419DAE70500A83271 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				98CDD6A719DAE87200A83271 /* MainViewController.h */,
+				98CDD6A819DAE87200A83271 /* MainViewController.m */,
+				98CDD6C119DB192400A83271 /* SettingsViewController.h */,
+				98CDD6C219DB192400A83271 /* SettingsViewController.m */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,8 +260,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98CDD68819DAE69F00A83271 /* Main.storyboard in Resources */,
 				98CDD68D19DAE69F00A83271 /* LaunchScreen.xib in Resources */,
+				98CDD6BF19DAEBB000A83271 /* MainStoryboard_iPhone.storyboard in Resources */,
 				98CDD68A19DAE69F00A83271 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,8 +280,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98CDD68519DAE69F00A83271 /* ViewController.m in Sources */,
+				98CDD6B719DAE87200A83271 /* MessageView.m in Sources */,
+				98CDD6BC19DAE87200A83271 /* Transcript.m in Sources */,
+				98CDD6B919DAE87200A83271 /* ProgressView.m in Sources */,
+				98CDD6B519DAE87200A83271 /* ImageView.m in Sources */,
 				98CDD68219DAE69F00A83271 /* AppDelegate.m in Sources */,
+				98CDD6BA19DAE87200A83271 /* SessionContainer.m in Sources */,
+				98CDD6B619DAE87200A83271 /* MainViewController.m in Sources */,
+				98CDD6C319DB192400A83271 /* SettingsViewController.m in Sources */,
+				98CDD6B819DAE87200A83271 /* ProgressObserver.m in Sources */,
 				98CDD67F19DAE69F00A83271 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,20 +312,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		98CDD68619DAE69F00A83271 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				98CDD68719DAE69F00A83271 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		98CDD68B19DAE69F00A83271 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				98CDD68C19DAE69F00A83271 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		98CDD6BD19DAEBB000A83271 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				98CDD6BE19DAEBB000A83271 /* Base */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
