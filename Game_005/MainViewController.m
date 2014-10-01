@@ -551,18 +551,18 @@ heightForRowAtIndexPath: (NSIndexPath *)indexPath
 - (IBAction)play_Action: (id)sender
 {
 
-	if ( gameView == nil ) {
-
-		//gameView = [[GameView alloc] initWithFrame: self.view.bounds];
-		gameView = [[NSBundle mainBundle] loadNibNamed: NSStringFromClass( [self class] )
-												 owner: nil
-											   options: nil] [0];
-		
-	}	
-	
-	[self.view addSubview: gameView];
-	
-	[self.view bringSubviewToFront: gameView];
+//	if ( gameView == nil ) {
+//
+//		//gameView = [[GameView alloc] initWithFrame: self.view.bounds];
+//		gameView = [[NSBundle mainBundle] loadNibNamed: NSStringFromClass( [self class] )
+//												 owner: nil
+//											   options: nil] [0];
+//		
+//	}	
+//	
+//	[self.view addSubview: gameView];
+//	
+//	[self.view bringSubviewToFront: gameView];
 
 }
 
