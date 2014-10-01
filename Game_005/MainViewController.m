@@ -8,6 +8,7 @@
 
 @import MultipeerConnectivity;
 
+#import "AppDelegate.h"
 #import "MainViewController.h"
 #import "SessionContainer.h"
 #import "Transcript.h"
@@ -563,6 +564,14 @@ heightForRowAtIndexPath: (NSIndexPath *)indexPath
 //	[self.view addSubview: gameView];
 //	
 //	[self.view bringSubviewToFront: gameView];
+
+	AppDelegate *app = [[UIApplication sharedApplication] delegate];
+
+	app.displayName      = self.displayName;
+	app.serviceType      = self.serviceType;
+	//app.sessionContainer = self.sessionContainer;
+	app.transcripts      = self.transcripts;
+	app.imageNameIndex   = self.imageNameIndex;
 
 }
 
