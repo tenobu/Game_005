@@ -22,7 +22,8 @@
 @property (nonatomic, weak) id<ProgressObserverDelegate> delegate;
 
 // Designated initializer
-- (id)initWithName:(NSString *)name progress:(NSProgress *)progress;
+- (id)initWithName: (NSString *)name
+		  progress: (NSProgress *)progress;
 
 @end
 
@@ -30,10 +31,12 @@
 @protocol ProgressObserverDelegate <NSObject>
 
 // Called when there is a change to the completion % of the resource transfer
-- (void)observerDidChange:(ProgressObserver *)observer;
+- (void)observerDidChange: (ProgressObserver *)observer;
+
 // Called when cancel is called on the NSProgress
-- (void)observerDidCancel:(ProgressObserver *)observer;
+- (void)observerDidCancel: (ProgressObserver *)observer;
+
 // Called when the resource transfer is complete
-- (void)observerDidComplete:(ProgressObserver *)observer;
+- (void)observerDidComplete: (ProgressObserver *)observer;
 
 @end
