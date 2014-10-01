@@ -10,7 +10,6 @@
 
 #import "MainViewController.h"
 #import "SessionContainer.h"
-#import "SettingsViewController.h"
 #import "Transcript.h"
 #import "MessageView.h"
 #import "ImageView.h"
@@ -20,7 +19,7 @@
 NSString * const kNSDefaultDisplayName = @"displayNameKey";
 NSString * const kNSDefaultServiceType = @"serviceTypeKey";
 
-@interface MainViewController () <MCBrowserViewControllerDelegate, SettingsViewControllerDelegate, UITextFieldDelegate, SessionContainerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface MainViewController () <MCBrowserViewControllerDelegate, /*SettingsViewControllerDelegate,*/ UITextFieldDelegate, SessionContainerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 // Display name for local MCPeerID
 @property (copy, nonatomic) NSString *displayName;
@@ -91,43 +90,43 @@ NSString * const kNSDefaultServiceType = @"serviceTypeKey";
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"Room Create"]) {
-        // Prepare the settings view where the user inputs the 'serviceType' and local peer 'displayName'
-        UINavigationController *navController = segue.destinationViewController;
-        SettingsViewController *viewController = (SettingsViewController *)navController.topViewController;
-        viewController.delegate = self;
-        // Pass the existing properties (if any) so the user can edit them.
-        viewController.displayName = self.displayName;
-        viewController.serviceType = self.serviceType;
-    }
-} 
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    if ([segue.identifier isEqualToString:@"Room Create"]) {
+//        // Prepare the settings view where the user inputs the 'serviceType' and local peer 'displayName'
+//        UINavigationController *navController = segue.destinationViewController;
+//        SettingsViewController *viewController = (SettingsViewController *)navController.topViewController;
+//        viewController.delegate = self;
+//        // Pass the existing properties (if any) so the user can edit them.
+//        viewController.displayName = self.displayName;
+//        viewController.serviceType = self.serviceType;
+//    }
+//}
 
 #pragma mark - SettingsViewControllerDelegate methods
 
 // Delegate method implementation handling return from the "Create Chat Room" pages
-- (void)controller:(SettingsViewController *)controller didCreateChatRoomWithDisplayName:(NSString *)displayName serviceType:(NSString *)serviceType
-{
-    // Dismiss the modal view controller
-    [self dismissViewControllerAnimated:YES completion:nil];
-
-    // Cache these for MC session creation and changing later via the "info" button
-    self.displayName = displayName;
-    self.serviceType = serviceType;
-
-    // Save these for subsequent app launches
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:displayName forKey:kNSDefaultDisplayName];
-    [defaults setObject:serviceType forKey:kNSDefaultServiceType];
-    [defaults synchronize];
-
-    // Set the service type (aka Room Name) as the view controller title
-    self.navigationItem.title = serviceType;
-
-    // Create the session
-    [self createSession];
-}
+//- (void)controller:(SettingsViewController *)controller didCreateChatRoomWithDisplayName:(NSString *)displayName serviceType:(NSString *)serviceType
+//{
+//    // Dismiss the modal view controller
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//
+//    // Cache these for MC session creation and changing later via the "info" button
+//    self.displayName = displayName;
+//    self.serviceType = serviceType;
+//
+//    // Save these for subsequent app launches
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    [defaults setObject:displayName forKey:kNSDefaultDisplayName];
+//    [defaults setObject:serviceType forKey:kNSDefaultServiceType];
+//    [defaults synchronize];
+//
+//    // Set the service type (aka Room Name) as the view controller title
+//    self.navigationItem.title = serviceType;
+//
+//    // Create the session
+//    [self createSession];
+//}
 
 #pragma mark - MCBrowserViewControllerDelegate methods
 
