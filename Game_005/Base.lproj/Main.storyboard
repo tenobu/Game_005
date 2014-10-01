@@ -4,65 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
-        <!--Create Room-->
-        <scene sceneID="1fF-lT-2sX">
-            <objects>
-                <viewController id="1kU-HA-vKc" customClass="SettingsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="YhU-9i-wfV"/>
-                        <viewControllerLayoutGuide type="bottom" id="9L8-Bv-qRP"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="lPS-nB-DWv">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Room Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVE-Ke-Z8P">
-                                <rect key="frame" x="20" y="99" width="98" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Display Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="20h-PH-lJK">
-                                <rect key="frame" x="20" y="153" width="107" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9U9-p5-jEg">
-                                <rect key="frame" x="135" y="95" width="165" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="1kU-HA-vKc" id="soq-Wg-kxz"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c8j-pD-h9c">
-                                <rect key="frame" x="135" y="150" width="165" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="1kU-HA-vKc" id="Kp9-Os-CEr"/>
-                                </connections>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Create Room" id="fOf-Ar-zIB">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="clO-Rg-TEU">
-                            <connections>
-                                <action selector="doneTapped:" destination="1kU-HA-vKc" id="MZE-mE-UdL"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="displayNameTextField" destination="c8j-pD-h9c" id="C10-Nd-mhT"/>
-                        <outlet property="serviceTypeTextField" destination="9U9-p5-jEg" id="8bc-nC-5gS"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SFm-yu-1lf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3498.75" y="33.802816901408448"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="QiR-gv-UKN">
             <objects>
@@ -186,25 +127,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SmB-Rt-BYS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1586.25" y="33.802816901408448"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="UHk-fx-bRU">
-            <objects>
-                <navigationController id="d8X-Bc-m49" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xz0-ff-JEV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="1kU-HA-vKc" kind="relationship" relationship="rootViewController" id="pNp-vJ-Eh0"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="O7s-wc-Her" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2512.5" y="33.802816901408448"/>
         </scene>
     </scenes>
 </document>
