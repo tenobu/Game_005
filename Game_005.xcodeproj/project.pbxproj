@@ -20,6 +20,9 @@
 		98CDD6BA19DAE87200A83271 /* SessionContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDD6B019DAE87200A83271 /* SessionContainer.m */; };
 		98CDD6BC19DAE87200A83271 /* Transcript.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDD6B419DAE87200A83271 /* Transcript.m */; };
 		98CDD6BF19DAEBB000A83271 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98CDD6BD19DAEBB000A83271 /* Main.storyboard */; };
+		98CDD6C619DB911200A83271 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDD6C519DB911200A83271 /* GameViewController.m */; };
+		98CDD6C919DB967E00A83271 /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDD6C819DB967E00A83271 /* GameView.m */; };
+		98CDD6CB19DB969800A83271 /* GameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98CDD6CA19DB969800A83271 /* GameView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,11 @@
 		98CDD6B419DAE87200A83271 /* Transcript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transcript.m; sourceTree = "<group>"; };
 		98CDD6BE19DAEBB000A83271 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		98CDD6C019DAF14800A83271 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
+		98CDD6C419DB911200A83271 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		98CDD6C519DB911200A83271 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		98CDD6C719DB967E00A83271 /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
+		98CDD6C819DB967E00A83271 /* GameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameView.m; sourceTree = "<group>"; };
+		98CDD6CA19DB969800A83271 /* GameView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,13 +108,14 @@
 		98CDD67B19DAE69F00A83271 /* Game_005 */ = {
 			isa = PBXGroup;
 			children = (
+				98CDD68019DAE69F00A83271 /* AppDelegate.h */,
+				98CDD68119DAE69F00A83271 /* AppDelegate.m */,
 				98CDD6BD19DAEBB000A83271 /* Main.storyboard */,
 				98CDD68B19DAE69F00A83271 /* LaunchScreen.xib */,
+				98CDD6CA19DB969800A83271 /* GameView.xib */,
 				98CDD6A219DAE6EA00A83271 /* Model */,
 				98CDD6A319DAE6F700A83271 /* View */,
 				98CDD6A419DAE70500A83271 /* Controller */,
-				98CDD68019DAE69F00A83271 /* AppDelegate.h */,
-				98CDD68119DAE69F00A83271 /* AppDelegate.m */,
 				98CDD68919DAE69F00A83271 /* Images.xcassets */,
 				98CDD67C19DAE69F00A83271 /* Supporting Files */,
 			);
@@ -156,6 +165,8 @@
 		98CDD6A319DAE6F700A83271 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				98CDD6C719DB967E00A83271 /* GameView.h */,
+				98CDD6C819DB967E00A83271 /* GameView.m */,
 				98CDD6A919DAE87200A83271 /* MessageView.h */,
 				98CDD6AA19DAE87200A83271 /* MessageView.m */,
 				98CDD6A519DAE87200A83271 /* ImageView.h */,
@@ -171,6 +182,8 @@
 			children = (
 				98CDD6A719DAE87200A83271 /* MainViewController.h */,
 				98CDD6A819DAE87200A83271 /* MainViewController.m */,
+				98CDD6C419DB911200A83271 /* GameViewController.h */,
+				98CDD6C519DB911200A83271 /* GameViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -255,6 +268,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98CDD6CB19DB969800A83271 /* GameView.xib in Resources */,
 				98CDD68D19DAE69F00A83271 /* LaunchScreen.xib in Resources */,
 				98CDD6BF19DAEBB000A83271 /* Main.storyboard in Resources */,
 				98CDD68A19DAE69F00A83271 /* Images.xcassets in Resources */,
@@ -275,12 +289,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98CDD6C619DB911200A83271 /* GameViewController.m in Sources */,
 				98CDD6B719DAE87200A83271 /* MessageView.m in Sources */,
 				98CDD6BC19DAE87200A83271 /* Transcript.m in Sources */,
 				98CDD6B919DAE87200A83271 /* ProgressView.m in Sources */,
 				98CDD6B519DAE87200A83271 /* ImageView.m in Sources */,
 				98CDD68219DAE69F00A83271 /* AppDelegate.m in Sources */,
 				98CDD6BA19DAE87200A83271 /* SessionContainer.m in Sources */,
+				98CDD6C919DB967E00A83271 /* GameView.m in Sources */,
 				98CDD6B619DAE87200A83271 /* MainViewController.m in Sources */,
 				98CDD6B819DAE87200A83271 /* ProgressObserver.m in Sources */,
 				98CDD67F19DAE69F00A83271 /* main.m in Sources */,

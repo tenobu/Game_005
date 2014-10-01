@@ -14,12 +14,20 @@
 #import "MessageView.h"
 #import "ImageView.h"
 #import "ProgressView.h"
+#import "GameView.h"
 
 // Constants for save/restore NSUserDefaults for the user entered display name and service type.
 NSString * const kNSDefaultDisplayName = @"displayNameKey";
 NSString * const kNSDefaultServiceType = @"serviceTypeKey";
 
-@interface MainViewController () <MCBrowserViewControllerDelegate, /*SettingsViewControllerDelegate,*/ UITextFieldDelegate, SessionContainerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface MainViewController () < MCBrowserViewControllerDelegate, /*SettingsViewControllerDelegate,*/ UITextFieldDelegate, SessionContainerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate >
+{
+
+@private
+	
+	GameView *gameView;
+	
+}
 
 // Display name for local MCPeerID
 @property (copy, nonatomic) NSString *displayName;
@@ -48,7 +56,7 @@ NSString * const kNSDefaultServiceType = @"serviceTypeKey";
 	[super viewDidLoad];
 
     // Init transcripts array to use as table view data source
-    _transcripts = [NSMutableArray new];
+    _transcripts    = [NSMutableArray new];
     _imageNameIndex = [NSMutableDictionary new];
     
     // Get the display name and service type from the previous session (if any)
@@ -77,17 +85,32 @@ NSString * const kNSDefaultServiceType = @"serviceTypeKey";
 
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    // Listen for will show/hide notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+- (void)viewWillAppear: (BOOL)animated
+{
+	
+	[super viewWillAppear:animated];
+	
+	// Listen for will show/hide notifications
+    [[NSNotificationCenter defaultCenter] addObserver: self
+											 selector: @selector( keyboardWillShow: )
+												 name: UIKeyboardWillShowNotification
+											   object: nil];
+	
+	[[NSNotificationCenter defaultCenter] addObserver: self
+											 selector: @selector( keyboardWillHide: )
+												 name: UIKeyboardWillHideNotification
+											   object: nil];
+
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    // Stop listening for keyboard notifications
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+- (void)viewWillDisappear: (BOOL)animated
+{
+	
+	[super viewWillDisappear: animated];
+	
+	// Stop listening for keyboard notifications
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
+
 }
 
 //- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -131,46 +154,70 @@ NSString * const kNSDefaultServiceType = @"serviceTypeKey";
 #pragma mark - MCBrowserViewControllerDelegate methods
 
 // Override this method to filter out peers based on application specific needs
-- (BOOL)browserViewController:(MCBrowserViewController *)browserViewController shouldPresentNearbyPeer:(MCPeerID *)peerID withDiscoveryInfo:(NSDictionary *)info
+- (BOOL)browserViewController: (MCBrowserViewController *)browserViewController
+	  shouldPresentNearbyPeer: (MCPeerID *)peerID
+			withDiscoveryInfo: (NSDictionary *)info
 {
-    return YES;
+
+	return YES;
+
 }
 
 // Override this to know when the user has pressed the "done" button in the MCBrowserViewController
-- (void)browserViewControllerDidFinish:(MCBrowserViewController *)browserViewController
+- (void)browserViewControllerDidFinish: (MCBrowserViewController *)browserViewController
 {
-    [browserViewController dismissViewControllerAnimated:YES completion:nil];
+
+	[browserViewController dismissViewControllerAnimated: YES
+											  completion: nil];
+
 }
 
 // Override this to know when the user has pressed the "cancel" button in the MCBrowserViewController
-- (void)browserViewControllerWasCancelled:(MCBrowserViewController *)browserViewController
+- (void)browserViewControllerWasCancelled: (MCBrowserViewController *)browserViewController
 {
-    [browserViewController dismissViewControllerAnimated:YES completion:nil];
+
+	[browserViewController dismissViewControllerAnimated: YES
+											  completion: nil];
+
 }
 
 #pragma mark - SessionContainerDelegate
 
-- (void)receivedTranscript:(Transcript *)transcript
+- (void)receivedTranscript: (Transcript *)transcript
 {
-    // Add to table view data source and update on main thread
-    dispatch_async(dispatch_get_main_queue(), ^{
-		[self insertTranscript:transcript];
-    });
+	
+	// Add to table view data source and update on main thread
+    dispatch_async( dispatch_get_main_queue(), ^{
+	
+		[self insertTranscript: transcript];
+		
+	});
+
 }
 
-- (void)updateTranscript:(Transcript *)transcript
+- (void)updateTranscript: (Transcript *)transcript
 {
-    // Find the data source index of the progress transcript
-    NSNumber *index = [_imageNameIndex objectForKey:transcript.imageName];
-    NSUInteger idx = [index unsignedLongValue];
-    // Replace the progress transcript with the image transcript
-    [_transcripts replaceObjectAtIndex:idx withObject:transcript];
+	
+	// Find the data source index of the progress transcript
+    NSNumber *index = [_imageNameIndex objectForKey: transcript.imageName];
+	
+	NSUInteger idx = [index unsignedLongValue];
+	
+	// Replace the progress transcript with the image transcript
+    [_transcripts replaceObjectAtIndex: idx
+							withObject: transcript];
 
     // Reload this particular table view row on the main thread
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:idx inSection:0];
-        [self.tableView reloadRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    });
+    dispatch_async( dispatch_get_main_queue(), ^{
+		
+		NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow: idx
+													   inSection: 0];
+		
+		[self.tableView reloadRowsAtIndexPaths: @[newIndexPath]
+							  withRowAnimation: UITableViewRowAnimationAutomatic];
+		
+	});
+
 }
 
 #pragma mark - private methods
@@ -178,97 +225,148 @@ NSString * const kNSDefaultServiceType = @"serviceTypeKey";
 // Private helper method for the Multipeer Connectivity local peerID, session, and advertiser.  This makes the application discoverable and ready to accept invitations
 - (void)createSession
 {
-    // Create the SessionContainer for managing session related functionality.
+	
+	// Create the SessionContainer for managing session related functionality.
     self.sessionContainer = [[SessionContainer alloc] initWithDisplayName:self.displayName serviceType:self.serviceType];
-    // Set this view controller as the SessionContainer delegate so we can display incoming Transcripts and session state changes in our table view.
-    _sessionContainer.delegate = self;
+	
+	// Set this view controller as the SessionContainer delegate so we can display incoming Transcripts and session state changes in our table view.
+	
+	_sessionContainer.delegate = self;
+
 }
 
 // Helper method for inserting a sent/received message into the data source and reload the view.
 // Make sure you call this on the main thread
-- (void)insertTranscript:(Transcript *)transcript
+- (void)insertTranscript: (Transcript *)transcript
 {
-    // Add to the data source
-    [_transcripts addObject:transcript];
+	
+	// Add to the data source
+    [_transcripts addObject: transcript];
 
     // If this is a progress transcript add it's index to the map with image name as the key
-    if (nil != transcript.progress) {
-        NSNumber *transcriptIndex = [NSNumber numberWithUnsignedLong:(_transcripts.count - 1)];
-        [_imageNameIndex setObject:transcriptIndex forKey:transcript.imageName];
-    }
+    if ( nil != transcript.progress ) {
+		
+		NSNumber *transcriptIndex = [NSNumber numberWithUnsignedLong: ( _transcripts.count - 1 )];
+		
+		[_imageNameIndex setObject: transcriptIndex
+							forKey: transcript.imageName];
+		
+	}
 
     // Update the table view
-    NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:([self.transcripts count] - 1) inSection:0];
-    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+    NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow: ( [self.transcripts count] - 1 )
+												   inSection: 0];
+	
+    [self.tableView insertRowsAtIndexPaths: [NSArray arrayWithObject: newIndexPath]
+						  withRowAnimation: UITableViewRowAnimationFade];
 
     // Scroll to the bottom so we focus on the latest message
-    NSUInteger numberOfRows = [self.tableView numberOfRowsInSection:0];
-    if (numberOfRows) {
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:(numberOfRows - 1) inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-    }
+    NSUInteger numberOfRows = [self.tableView numberOfRowsInSection: 0];
+	
+	if (numberOfRows) {
+		
+		[self.tableView scrollToRowAtIndexPath: [NSIndexPath indexPathForRow: (numberOfRows - 1)
+																   inSection: 0]
+							  atScrollPosition: UITableViewScrollPositionBottom
+									  animated: YES];
+
+	}
+
 }
 
 #pragma mark - Table view data source
 
 // Only one section in this example
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView: (UITableView *)tableView
 {
-    return 1;
+	
+	return 1;
+
 }
+
 // The numer of rows is based on the count in the transcripts arrays
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView: (UITableView *)tableView
+ numberOfRowsInSection: (NSInteger)section
 {
-    return self.transcripts.count;
+
+	return self.transcripts.count;
+
 }
 
 // The individual cells depend on the type of Transcript at a given row.  We have 3 row types (i.e. 3 custom cells) for text string messages, resource transfer progress, and completed image resources
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView: (UITableView *)tableView
+		 cellForRowAtIndexPath: (NSIndexPath *)indexPath
 {
-    // Get the transcript for this row
-    Transcript *transcript = [self.transcripts objectAtIndex:indexPath.row];
+
+	// Get the transcript for this row
+    Transcript *transcript = [self.transcripts objectAtIndex: indexPath.row];
 
     // Check if it's an image progress, completed image, or text message
     UITableViewCell *cell;
-    if (nil != transcript.imageUrl) {
-        // It's a completed image
-        cell = [tableView dequeueReusableCellWithIdentifier:@"Image Cell" forIndexPath:indexPath];
-        // Get the image view
-        ImageView *imageView = (ImageView *)[cell viewWithTag:IMAGE_VIEW_TAG];
-        // Set up the image view for this transcript
+	
+	if ( nil != transcript.imageUrl ) {
+		
+		// It's a completed image
+        cell = [tableView dequeueReusableCellWithIdentifier: @"Image Cell"
+											   forIndexPath: indexPath];
+		
+		// Get the image view
+        ImageView *imageView = (ImageView *)[cell viewWithTag: IMAGE_VIEW_TAG];
+		
+		// Set up the image view for this transcript
         imageView.transcript = transcript;
-    }
-    else if (nil != transcript.progress) {
+		
+	} else if ( nil != transcript.progress ) {
+		
         // It's a resource transfer in progress
-        cell = [tableView dequeueReusableCellWithIdentifier:@"Progress Cell" forIndexPath:indexPath];
-        ProgressView *progressView = (ProgressView *)[cell viewWithTag:PROGRESS_VIEW_TAG];
-        // Set up the progress view for this transcript
+        cell = [tableView dequeueReusableCellWithIdentifier: @"Progress Cell"
+											   forIndexPath: indexPath];
+		
+		ProgressView *progressView = (ProgressView *)[cell viewWithTag: PROGRESS_VIEW_TAG];
+		
+		// Set up the progress view for this transcript
         progressView.transcript = transcript;
-    }
-    else {
-        // Get the associated cell type for messages
-        cell = [tableView dequeueReusableCellWithIdentifier:@"Message Cell" forIndexPath:indexPath];
-        // Get the message view
-        MessageView *messageView = (MessageView *)[cell viewWithTag:MESSAGE_VIEW_TAG];
-        // Set up the message view for this transcript
+		
+	} else {
+		
+		// Get the associated cell type for messages
+        cell = [tableView dequeueReusableCellWithIdentifier: @"Message Cell"
+											   forIndexPath: indexPath];
+		
+		// Get the message view
+        MessageView *messageView = (MessageView *)[cell viewWithTag: MESSAGE_VIEW_TAG];
+		
+		// Set up the message view for this transcript
         messageView.transcript = transcript;
-    }
-    return cell;
+		
+	}
+	
+	return cell;
+
 }
 
 // Return the height of the row based on the type of transfer and custom view it contains
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)   tableView: (UITableView *)tableView
+heightForRowAtIndexPath: (NSIndexPath *)indexPath
 {
-    // Dynamically compute the label size based on cell type (image, image progress, or text message)
+	
+	// Dynamically compute the label size based on cell type (image, image progress, or text message)
     Transcript *transcript = [self.transcripts objectAtIndex:indexPath.row];
-    if (nil != transcript.imageUrl) {
-        return [ImageView viewHeightForTranscript:transcript];
-    }
-    else if (nil != transcript.progress) {
-        return [ProgressView viewHeightForTranscript:transcript];
-    }
-    else {
-        return [MessageView viewHeightForTranscript:transcript];
-    }
+	
+	if ( nil != transcript.imageUrl ) {
+		
+		return [ImageView viewHeightForTranscript: transcript];
+		
+	} else if ( nil != transcript.progress ) {
+		
+		return [ProgressView viewHeightForTranscript: transcript];
+		
+	} else {
+		
+		return [MessageView viewHeightForTranscript: transcript];
+		
+	}
+
 }
 
 #pragma mark - IBAction methods
@@ -448,6 +546,24 @@ NSString * const kNSDefaultServiceType = @"serviceTypeKey";
 - (void)keyboardWillHide:(NSNotification *)notification {
     // move the toolbar frame down as keyboard animates into view
     [self moveToolBarUp:NO forKeyboardNotification:notification];
+}
+
+- (IBAction)play_Action: (id)sender
+{
+
+	if ( gameView == nil ) {
+
+		//gameView = [[GameView alloc] initWithFrame: self.view.bounds];
+		gameView = [[NSBundle mainBundle] loadNibNamed: NSStringFromClass( [self class] )
+												 owner: nil
+											   options: nil] [0];
+		
+	}	
+	
+	[self.view addSubview: gameView];
+	
+	[self.view bringSubviewToFront: gameView];
+
 }
 
 @end

@@ -118,6 +118,11 @@
                                 <action selector="browseForPeers:" destination="p9r-Z3-7FD" id="YLn-Pb-zYM"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Play" id="1gB-xi-LYA">
+                            <connections>
+                                <action selector="play_Action:" destination="p9r-Z3-7FD" id="2yS-d8-SOT"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="messageComposeTextField" destination="pVg-1Y-X0B" id="7R3-IJ-NHI"/>
