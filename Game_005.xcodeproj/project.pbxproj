@@ -19,8 +19,7 @@
 		98CDD6B919DAE87200A83271 /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDD6AE19DAE87200A83271 /* ProgressView.m */; };
 		98CDD6BA19DAE87200A83271 /* SessionContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDD6B019DAE87200A83271 /* SessionContainer.m */; };
 		98CDD6BC19DAE87200A83271 /* Transcript.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDD6B419DAE87200A83271 /* Transcript.m */; };
-		98CDD6BF19DAEBB000A83271 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98CDD6BD19DAEBB000A83271 /* MainStoryboard_iPhone.storyboard */; };
-		98CDD6C319DB192400A83271 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDD6C219DB192400A83271 /* SettingsViewController.m */; };
+		98CDD6BF19DAEBB000A83271 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98CDD6BD19DAEBB000A83271 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,10 +57,8 @@
 		98CDD6B019DAE87200A83271 /* SessionContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionContainer.m; sourceTree = "<group>"; };
 		98CDD6B319DAE87200A83271 /* Transcript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transcript.h; sourceTree = "<group>"; };
 		98CDD6B419DAE87200A83271 /* Transcript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transcript.m; sourceTree = "<group>"; };
-		98CDD6BE19DAEBB000A83271 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		98CDD6BE19DAEBB000A83271 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		98CDD6C019DAF14800A83271 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
-		98CDD6C119DB192400A83271 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
-		98CDD6C219DB192400A83271 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +100,7 @@
 		98CDD67B19DAE69F00A83271 /* Game_005 */ = {
 			isa = PBXGroup;
 			children = (
-				98CDD6BD19DAEBB000A83271 /* MainStoryboard_iPhone.storyboard */,
+				98CDD6BD19DAEBB000A83271 /* Main.storyboard */,
 				98CDD68B19DAE69F00A83271 /* LaunchScreen.xib */,
 				98CDD6A219DAE6EA00A83271 /* Model */,
 				98CDD6A319DAE6F700A83271 /* View */,
@@ -174,8 +171,6 @@
 			children = (
 				98CDD6A719DAE87200A83271 /* MainViewController.h */,
 				98CDD6A819DAE87200A83271 /* MainViewController.m */,
-				98CDD6C119DB192400A83271 /* SettingsViewController.h */,
-				98CDD6C219DB192400A83271 /* SettingsViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -261,7 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98CDD68D19DAE69F00A83271 /* LaunchScreen.xib in Resources */,
-				98CDD6BF19DAEBB000A83271 /* MainStoryboard_iPhone.storyboard in Resources */,
+				98CDD6BF19DAEBB000A83271 /* Main.storyboard in Resources */,
 				98CDD68A19DAE69F00A83271 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,7 +282,6 @@
 				98CDD68219DAE69F00A83271 /* AppDelegate.m in Sources */,
 				98CDD6BA19DAE87200A83271 /* SessionContainer.m in Sources */,
 				98CDD6B619DAE87200A83271 /* MainViewController.m in Sources */,
-				98CDD6C319DB192400A83271 /* SettingsViewController.m in Sources */,
 				98CDD6B819DAE87200A83271 /* ProgressObserver.m in Sources */,
 				98CDD67F19DAE69F00A83271 /* main.m in Sources */,
 			);
@@ -320,12 +314,12 @@
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
-		98CDD6BD19DAEBB000A83271 /* MainStoryboard_iPhone.storyboard */ = {
+		98CDD6BD19DAEBB000A83271 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				98CDD6BE19DAEBB000A83271 /* Base */,
 			);
-			name = MainStoryboard_iPhone.storyboard;
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
