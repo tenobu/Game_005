@@ -12,9 +12,11 @@
 
 // Enumeration of transcript directions
 typedef enum {
-    TRANSCRIPT_DIRECTION_SEND = 0,
+
+	TRANSCRIPT_DIRECTION_SEND = 0,
     TRANSCRIPT_DIRECTION_RECEIVE,
     TRANSCRIPT_DIRECTION_LOCAL // for admin messages. i.e. "<name> connected"
+
 } TranscriptDirection;
 
 @interface Transcript : NSObject
@@ -33,10 +35,19 @@ typedef enum {
 @property (readonly, nonatomic) NSProgress *progress;
 
 // Initializer used for sent/received text messages
-- (id)initWithPeerID:(MCPeerID *)peerID message:(NSString *)message direction:(TranscriptDirection)direction;
+- (id)initWithPeerID: (MCPeerID *)peerID
+			 message: (NSString *)message
+		   direction: (TranscriptDirection)direction;
+
 // Initializer used for sent/received image resources
-- (id)initWithPeerID:(MCPeerID *)peerID imageUrl:(NSURL *)imageUrl direction:(TranscriptDirection)direction;
+//- (id)initWithPeerID: (MCPeerID *)peerID
+//			imageUrl: (NSURL *)imageUrl
+//		   direction: (TranscriptDirection)direction;
+
 // Initialized used for sending/receiving image resources.  This tracks their progress
-- (id)initWithPeerID:(MCPeerID *)peerID imageName:(NSString *)imageName progress:(NSProgress *)progress direction:(TranscriptDirection)direction;
+//- (id)initWithPeerID: (MCPeerID *)peerID
+//		   imageName: (NSString *)imageName
+//			progress: (NSProgress *)progress
+//		   direction: (TranscriptDirection)direction;
 
 @end

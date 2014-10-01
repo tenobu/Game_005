@@ -23,6 +23,7 @@
 		98CDD6C619DB911200A83271 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDD6C519DB911200A83271 /* GameViewController.m */; };
 		98CDD6C919DB967E00A83271 /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDD6C819DB967E00A83271 /* GameView.m */; };
 		98CDD6CB19DB969800A83271 /* GameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98CDD6CA19DB969800A83271 /* GameView.xib */; };
+		98CDD6CE19DBC50000A83271 /* MainViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDD6CD19DBC50000A83271 /* MainViewController2.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,8 @@
 		98CDD6C719DB967E00A83271 /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
 		98CDD6C819DB967E00A83271 /* GameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameView.m; sourceTree = "<group>"; };
 		98CDD6CA19DB969800A83271 /* GameView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameView.xib; sourceTree = "<group>"; };
+		98CDD6CC19DBC50000A83271 /* MainViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController2.h; sourceTree = "<group>"; };
+		98CDD6CD19DBC50000A83271 /* MainViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController2.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +185,8 @@
 			children = (
 				98CDD6A719DAE87200A83271 /* MainViewController.h */,
 				98CDD6A819DAE87200A83271 /* MainViewController.m */,
+				98CDD6CC19DBC50000A83271 /* MainViewController2.h */,
+				98CDD6CD19DBC50000A83271 /* MainViewController2.m */,
 				98CDD6C419DB911200A83271 /* GameViewController.h */,
 				98CDD6C519DB911200A83271 /* GameViewController.m */,
 			);
@@ -299,6 +304,7 @@
 				98CDD6C919DB967E00A83271 /* GameView.m in Sources */,
 				98CDD6B619DAE87200A83271 /* MainViewController.m in Sources */,
 				98CDD6B819DAE87200A83271 /* ProgressObserver.m in Sources */,
+				98CDD6CE19DBC50000A83271 /* MainViewController2.m in Sources */,
 				98CDD67F19DAE69F00A83271 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

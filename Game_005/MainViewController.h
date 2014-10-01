@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainViewController : UITableViewController
+@interface MainViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @end

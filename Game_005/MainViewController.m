@@ -68,7 +68,7 @@ NSString * const kNSDefaultServiceType = @"serviceTypeKey";
 	self.displayName = dev.name;
 	self.serviceType = @"JammBall";
 
-    if (self.displayName && self.serviceType) {
+    if ( self.displayName && self.serviceType ) {
 		
 		// Show the service type (room name) as a title
         self.navigationItem.title = self.serviceType;
@@ -79,7 +79,7 @@ NSString * const kNSDefaultServiceType = @"serviceTypeKey";
 	} else {
 		
 		// first time running the application.  user needs to create the group chat service
-        [self performSegueWithIdentifier:@"Room Create" sender:self];
+        //[self performSegueWithIdentifier:@"Room Create" sender:self];
 		
 	}
 
@@ -210,11 +210,11 @@ NSString * const kNSDefaultServiceType = @"serviceTypeKey";
     // Reload this particular table view row on the main thread
     dispatch_async( dispatch_get_main_queue(), ^{
 		
-		NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow: idx
-													   inSection: 0];
-		
-		[self.tableView reloadRowsAtIndexPaths: @[newIndexPath]
-							  withRowAnimation: UITableViewRowAnimationAutomatic];
+//		NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow: idx
+//													   inSection: 0];
+//		
+//		[self.tableView reloadRowsAtIndexPaths: @[newIndexPath]
+//							  withRowAnimation: UITableViewRowAnimationAutomatic];
 		
 	});
 
@@ -227,7 +227,8 @@ NSString * const kNSDefaultServiceType = @"serviceTypeKey";
 {
 	
 	// Create the SessionContainer for managing session related functionality.
-    self.sessionContainer = [[SessionContainer alloc] initWithDisplayName:self.displayName serviceType:self.serviceType];
+    self.sessionContainer = [[SessionContainer alloc] initWithDisplayName: self.displayName
+															  serviceType: self.serviceType];
 	
 	// Set this view controller as the SessionContainer delegate so we can display incoming Transcripts and session state changes in our table view.
 	
@@ -254,210 +255,183 @@ NSString * const kNSDefaultServiceType = @"serviceTypeKey";
 	}
 
     // Update the table view
-    NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow: ( [self.transcripts count] - 1 )
-												   inSection: 0];
+//    NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow: ( [self.transcripts count] - 1 )
+//												   inSection: 0];
 	
-    [self.tableView insertRowsAtIndexPaths: [NSArray arrayWithObject: newIndexPath]
-						  withRowAnimation: UITableViewRowAnimationFade];
+//    [self.tableView insertRowsAtIndexPaths: [NSArray arrayWithObject: newIndexPath]
+//						  withRowAnimation: UITableViewRowAnimationFade];
 
-    // Scroll to the bottom so we focus on the latest message
-    NSUInteger numberOfRows = [self.tableView numberOfRowsInSection: 0];
+//	NSArray *array = [NSArray arrayWithObject: newIndexPath];
 	
-	if (numberOfRows) {
-		
-		[self.tableView scrollToRowAtIndexPath: [NSIndexPath indexPathForRow: (numberOfRows - 1)
-																   inSection: 0]
-							  atScrollPosition: UITableViewScrollPositionBottom
-									  animated: YES];
-
-	}
+	// Scroll to the bottom so we focus on the latest message
+//	NSUInteger numberOfRows = [self.tableView numberOfRowsInSection: 0];
+//	
+//	if (numberOfRows) {
+//		
+//		[self.tableView scrollToRowAtIndexPath: [NSIndexPath indexPathForRow: (numberOfRows - 1)
+//																   inSection: 0]
+//							  atScrollPosition: UITableViewScrollPositionBottom
+//									  animated: YES];
+//
+//	}
 
 }
-
-#pragma mark - Table view data source
-
-// Only one section in this example
-- (NSInteger)numberOfSectionsInTableView: (UITableView *)tableView
-{
-	
-	return 1;
-
-}
-
-// The numer of rows is based on the count in the transcripts arrays
-- (NSInteger)tableView: (UITableView *)tableView
- numberOfRowsInSection: (NSInteger)section
-{
-
-	return self.transcripts.count;
-
-}
-
-// The individual cells depend on the type of Transcript at a given row.  We have 3 row types (i.e. 3 custom cells) for text string messages, resource transfer progress, and completed image resources
-- (UITableViewCell *)tableView: (UITableView *)tableView
-		 cellForRowAtIndexPath: (NSIndexPath *)indexPath
-{
-
-	// Get the transcript for this row
-    Transcript *transcript = [self.transcripts objectAtIndex: indexPath.row];
-
-    // Check if it's an image progress, completed image, or text message
-    UITableViewCell *cell;
-	
-	if ( nil != transcript.imageUrl ) {
-		
-		// It's a completed image
-        cell = [tableView dequeueReusableCellWithIdentifier: @"Image Cell"
-											   forIndexPath: indexPath];
-		
-		// Get the image view
-        ImageView *imageView = (ImageView *)[cell viewWithTag: IMAGE_VIEW_TAG];
-		
-		// Set up the image view for this transcript
-        imageView.transcript = transcript;
-		
-	} else if ( nil != transcript.progress ) {
-		
-        // It's a resource transfer in progress
-        cell = [tableView dequeueReusableCellWithIdentifier: @"Progress Cell"
-											   forIndexPath: indexPath];
-		
-		ProgressView *progressView = (ProgressView *)[cell viewWithTag: PROGRESS_VIEW_TAG];
-		
-		// Set up the progress view for this transcript
-        progressView.transcript = transcript;
-		
-	} else {
-		
-		// Get the associated cell type for messages
-        cell = [tableView dequeueReusableCellWithIdentifier: @"Message Cell"
-											   forIndexPath: indexPath];
-		
-		// Get the message view
-        MessageView *messageView = (MessageView *)[cell viewWithTag: MESSAGE_VIEW_TAG];
-		
-		// Set up the message view for this transcript
-        messageView.transcript = transcript;
-		
-	}
-	
-	return cell;
-
-}
-
 // Return the height of the row based on the type of transfer and custom view it contains
-- (CGFloat)   tableView: (UITableView *)tableView
-heightForRowAtIndexPath: (NSIndexPath *)indexPath
-{
-	
-	// Dynamically compute the label size based on cell type (image, image progress, or text message)
-    Transcript *transcript = [self.transcripts objectAtIndex:indexPath.row];
-	
-	if ( nil != transcript.imageUrl ) {
-		
-		return [ImageView viewHeightForTranscript: transcript];
-		
-	} else if ( nil != transcript.progress ) {
-		
-		return [ProgressView viewHeightForTranscript: transcript];
-		
-	} else {
-		
-		return [MessageView viewHeightForTranscript: transcript];
-		
-	}
-
-}
+//- (CGFloat)   tableView: (UITableView *)tableView
+//heightForRowAtIndexPath: (NSIndexPath *)indexPath
+//{
+//	
+//	// Dynamically compute the label size based on cell type (image, image progress, or text message)
+//    Transcript *transcript = [self.transcripts objectAtIndex:indexPath.row];
+//	
+//	if ( nil != transcript.imageUrl ) {
+//		
+//		return [ImageView viewHeightForTranscript: transcript];
+//		
+//	} else if ( nil != transcript.progress ) {
+//		
+//		return [ProgressView viewHeightForTranscript: transcript];
+//		
+//	} else {
+//		
+//		return [MessageView viewHeightForTranscript: transcript];
+//		
+//	}
+//
+//}
 
 #pragma mark - IBAction methods
 
 // Action method when pressing the "browse" (search icon).  It presents the MCBrowserViewController: a framework UI which enables users to invite and connect to other peers with the same room name (aka service type).
-- (IBAction)browseForPeers:(id)sender
+- (IBAction)browseForPeers: (id)sender
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+
+	NSLog(@"%s", __PRETTY_FUNCTION__);
     
     // Instantiate and present the MCBrowserViewController
     MCBrowserViewController *browserViewController = [[MCBrowserViewController alloc] initWithServiceType:self.serviceType session:self.sessionContainer.session];
                                                       
 	browserViewController.delegate = self;
-    browserViewController.minimumNumberOfPeers = kMCSessionMinimumNumberOfPeers;
+	
+	browserViewController.minimumNumberOfPeers = kMCSessionMinimumNumberOfPeers;
     browserViewController.maximumNumberOfPeers = kMCSessionMaximumNumberOfPeers;
 
-    [self presentViewController:browserViewController animated:YES completion:nil];
+    [self presentViewController: browserViewController
+					   animated: YES
+					 completion: nil];
+
 }
 
 // Action method when user presses "send"
 - (IBAction)sendMessageTapped:(id)sender
 {    
-    // Dismiss the keyboard.  Message will be actually sent when the keyboard resigns.
+
+	// Dismiss the keyboard.  Message will be actually sent when the keyboard resigns.
     [self.messageComposeTextField resignFirstResponder];
+
 }
 
 // Action method when user presses the "camera" photo icon.
 - (IBAction)photoButtonTapped:(id)sender
 {
-    // Preset an action sheet which enables the user to take a new picture or select and existing one.
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel"  destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Choose Existing", nil];
+	
+	// Preset an action sheet which enables the user to take a new picture or select and existing one.
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle: nil
+													   delegate: self
+											  cancelButtonTitle: @"Cancel"
+										 destructiveButtonTitle: nil
+											  otherButtonTitles: @"Take Photo", @"Choose Existing", nil];
     
     // Show the action sheet
     [sheet showFromToolbar:self.navigationController.toolbar];
+
 }
 
 #pragma mark - UIActionSheetDelegate methods
 
 // Override this method to know if user wants to take a new photo or select from the photo library
-- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+- (void)      actionSheet: (UIActionSheet *)actionSheet
+didDismissWithButtonIndex: (NSInteger)buttonIndex
 {
-    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+	
+	UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
 
-    if (imagePicker) {
-        // set the delegate and source type, and present the image picker
+    if ( imagePicker ) {
+		
+		// set the delegate and source type, and present the image picker
         imagePicker.delegate = self;
-        if (0 == buttonIndex) {
-            imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        }
-        else if (1 == buttonIndex) {
-            imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        }
-        [self presentViewController:imagePicker animated:YES completion:nil];
-    }
-    else {
-        // Problem with camera, alert user
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Camera" message:@"Please use a camera enabled device" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-    }
+		
+		if ( 0 == buttonIndex ) {
+			
+			imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+			
+		} else if ( 1 == buttonIndex ) {
+			
+			imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+			
+		}
+		
+		[self presentViewController: imagePicker
+						   animated: YES
+						 completion: nil];
+		
+	} else {
+		
+		// Problem with camera, alert user
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"No Camera"
+														message: @"Please use a camera enabled device"
+													   delegate: nil
+											  cancelButtonTitle: @"OK"
+											  otherButtonTitles: nil];
+		
+		[alert show];
+		
+	}
+
 }
 
 #pragma mark - UIImagePickerViewControllerDelegate
 
 // For responding to the user tapping Cancel.
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+- (void)imagePickerControllerDidCancel: (UIImagePickerController *)picker
 {
-    [picker dismissViewControllerAnimated:YES completion:nil];
+
+	[picker dismissViewControllerAnimated: YES
+							   completion: nil];
+
 }
 
 // Override this delegate method to get the image that the user has selected and send it view Multipeer Connectivity to the connected peers.
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+- (void)imagePickerController: (UIImagePickerController *)picker
+didFinishPickingMediaWithInfo: (NSDictionary *)info
 {
-    [picker dismissViewControllerAnimated:YES completion:nil];
+	
+	[picker dismissViewControllerAnimated: YES
+							   completion: nil];
 
     // Don't block the UI when writing the image to documents
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        // We only handle a still image
-        UIImage *imageToSave = (UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage];
+    dispatch_async( dispatch_get_global_queue( 0, 0 ), ^{
+		
+		// We only handle a still image
+        UIImage *imageToSave = (UIImage *)[info objectForKey: UIImagePickerControllerOriginalImage];
 
         // Save the new image to the documents directory
-        NSData *pngData = UIImageJPEGRepresentation(imageToSave, 1.0);
+        NSData *pngData = UIImageJPEGRepresentation( imageToSave, 1.0 );
 
         // Create a unique file name
         NSDateFormatter *inFormat = [NSDateFormatter new];
+		
         [inFormat setDateFormat:@"yyMMdd-HHmmss"];
-        NSString *imageName = [NSString stringWithFormat:@"image-%@.JPG", [inFormat stringFromDate:[NSDate date]]];
-        // Create a file path to our documents directory
+		
+		NSString *imageName = [NSString stringWithFormat:@"image-%@.JPG", [inFormat stringFromDate:[NSDate date]]];
+		
+		// Create a file path to our documents directory
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:imageName];
-        [pngData writeToFile:filePath atomically:YES]; // Write the file
-        // Get a URL for this file resource
+		
+		[pngData writeToFile:filePath atomically:YES]; // Write the file
+		
+		// Get a URL for this file resource
         NSURL *imageUrl = [NSURL fileURLWithPath:filePath];
 
         // Send the resource to the remote peers and get the resulting progress transcript
@@ -551,17 +525,6 @@ heightForRowAtIndexPath: (NSIndexPath *)indexPath
 - (IBAction)play_Action: (id)sender
 {
 
-	if ( gameView == nil ) {
-
-		//gameView = [[GameView alloc] initWithFrame: self.view.bounds];
-		gameView = [[NSBundle mainBundle] loadNibNamed: NSStringFromClass( [self class] )
-												 owner: nil
-											   options: nil] [0];
-		
-	}	
-	
-	[self.view addSubview: gameView];
-	
 	[self.view bringSubviewToFront: gameView];
 
 }
